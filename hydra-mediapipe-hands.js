@@ -82,7 +82,7 @@ async function main() {
         }
         _hands.frameCounter += 1;
         _hands.frameCounter %= _hands.frameUpdate;
-        _hands.frameCounter = _hands.frameCounter || 1;
+        if (isNaN(_hands.frameCounter)) _hands.frameCounter = 1;
     }
     function initHands() {
         _hands.send({ image: _hands.currentSource.src }).then(() => {
