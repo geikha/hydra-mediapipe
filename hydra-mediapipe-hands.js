@@ -140,4 +140,4 @@ async function main() {
     };
 }
 
-main();
+if(!window.hydraHands) main();
