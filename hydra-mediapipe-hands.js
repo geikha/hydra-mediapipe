@@ -132,10 +132,10 @@ async function main() {
     window.hands[1].palm = { x: 0, y: 0, z: 0 };
 
     const gS = _hydraScope.osc().constructor.prototype;
-    gS.followHand = function (whichHand = 0, mult = 1) {
+    gS.followHand = function (whichHand = 0, multX = 1, multY = 1) {
         return this.scroll(
-            () => hands[whichHand].palm.x * mult,
-            () => hands[whichHand].palm.y * mult
+            () => hands[whichHand].palm.x * multX,
+            () => hands[whichHand].palm.y * multY
         );
     };
 }
