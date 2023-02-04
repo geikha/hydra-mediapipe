@@ -47,7 +47,7 @@ async function main() {
     _hands.initialized = false;
     _hands.currentSource = null;
     _hands.frameCounter = 0;
-    _hands.frameUpdate = 4;
+    _hands.frameUpdate = 2;
 
     const range = (x, min, max) => x * (max - min) + min;
     const hydrate = (x) => range(x, 0.5, -0.5);
@@ -82,6 +82,7 @@ async function main() {
         }
         _hands.frameCounter += 1;
         _hands.frameCounter %= _hands.frameUpdate;
+        _hands.frameCounter = _hands.frameCounter || 1;
     }
     function initHands() {
         _hands.send({ image: _hands.currentSource.src }).then(() => {
@@ -114,6 +115,11 @@ async function main() {
                 func(dt);
             }
         };
+    }
+
+    window.hydraHands = {};
+    hydraHands.setFrameUpdate = function(frameUpdate){
+        _hydra.frameUpdate = frameUpdate;
     }
 }
 
